@@ -51,11 +51,6 @@ public class Main {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             BufferedWriter writer = createBufferedWriterInResources(outputFile);
 
-            if (inputStream == null) {
-                System.err.println("Error: File '" + inputFile + "' not found in resources.");
-                return;
-            }
-
             String[] chunk = new String[50];
             int linesRead;
 
@@ -83,6 +78,7 @@ public class Main {
                                 .get("text").getAsString();
 
                         writer.write(translatedText + "\n");
+                        writer.flush();
                         System.out.println("Chunk translated and appended.");
                         System.out.println(translatedText);
                     } else {
